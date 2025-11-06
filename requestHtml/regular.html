@@ -1,0 +1,52 @@
+<div class="two-column-layout">
+    <div class="column">
+        <div class="column-container">
+            <span>全屏</span>
+            <label class="switch">
+                <input type="checkbox" id="fullscreen-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="column-container">
+            <span>比例</span>
+            <select id="ratio-select">
+                <option value="16:9">16:9</option>
+                <option value="4:3">4:3</option>
+            </select>
+        </div>
+    </div>
+    <div class="column">
+        <div class="item">内容 1</div>
+        <div class="item">内容 2</div>
+        <div class="item">内容 3</div>
+    </div>
+</div>
+<div class="one-column-layout">
+    <div class="column-container setUser">
+        <div class="row">
+            <span>用户设置</span>
+        </div>
+        <div class="row getInfo">
+            <div class="getinfoColumn" style="width: 60%;">
+                <div class="getinfoColumnInput">
+                    <input type="text" name="userId64" id="userId64" placeholder="输入steamId">
+                    <input type="button" value="获取" id="getUserInfoBtn">
+                </div>
+                <span id="requestStatus">输入SteamId获取昵称和头像<br>（示例输入：76561199198280801）</span>
+            </div>
+            <div class="getinfoColumn">
+                <img src="" alt="头像" id="setPerviewUserAvatar">
+            </div>
+        </div>
+        <div class="row">
+            <label>用户昵称：</label>
+            <input type="text" name="setUserName" id="setUserName">
+        </div>
+        <div class="row">
+            <label>用户头像地址：</label>
+            <input type="text" name="setUserAvatar" id="setUserAvatar">
+        </div>
+    </div>
+</div>
+<button id="save-settings">保存设置</button>
+<span id="saveingStatus"></span>

@@ -1,0 +1,30 @@
+<div id="main-page" class="main-page">
+    <div class="filter-container">
+        <div id="category-button-group"></div>
+        <div id="weapon-select-container" style="display: none;">
+            <div id="weapon-select-dropdown" class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown()">
+                    <span>选择武器</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div id="weapon-options" class="dropdown-content"></div>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="search-button">搜索</button>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div id="results"></div>
+    </div>
+
+    <div class="pagination">
+        <button id="prev-page" class="category-button">上一页</button>
+        <span id="page-info">第 0 页，共 0 页</span>
+        <button id="next-page" class="category-button">下一页</button>
+    </div>
+</div>
+
+<div id="detail-page" style="display: none;"></div>

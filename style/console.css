@@ -1,0 +1,196 @@
+:root {
+    --selectedTextBackgroundColor: rgba(102, 102, 153, 0.4);
+    --consoleMinWidth: 300px;
+    --consoleMinHeight: 300px;
+}
+
+/* 在原有基础上添加 */
+.ConsolePanel {
+    border: 1px solid #333;
+    background-color: #222;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6);
+    min-width: var(--consoleMinWidth);
+    min-height: var(--consoleMinHeight);
+    position: fixed; /* 确保可拖动定位 */
+    left: 20px;
+    top: 20px;
+    display: flex; /* 新增flex布局 */
+    flex-direction: column;
+    height: 300px; /* 新增视口高度限制 */
+    z-index: 1000;
+}
+
+#MainContents {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%; /* 改为严格分配剩余空间 */
+    min-height: 0; /* 关键修复 */
+}
+
+#Header {
+    width: calc(100% - 8px);
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: move; /* 拖拽光标 */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.FillWidth {
+    flex: 1;
+}
+
+#CloseButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#CloseButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#CloseButton:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#Title {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#ConsoleLog {
+    padding: 4px;
+    flex: 1;
+    min-height: 0; /* 允许内容溢出 */
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#ConsoleText {
+    font-size: 14px;
+    margin: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e1e1e1;
+    white-space: pre-wrap;
+}
+
+/* 在原有#ConsoleInput样式基础上添加 */
+#ConsoleInput {
+    width: calc(100% - 8px);
+    border-top: 1px solid #333;
+    background-color: black;
+    color: white;
+    padding: 4px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    min-height: 28px;
+    white-space: pre-wrap;
+    flex-shrink: 0; /* 新增固定底部属性 */
+    position: sticky;
+    bottom: 0;
+}
+
+/* 自动补全下拉框 */
+.autocomplete-suggestions {
+    position: absolute;
+    background: #3d4448;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.autocomplete-suggestion {
+    padding: 6px 12px;
+    color: #e1e1e1;
+    cursor: pointer;
+}
+
+.autocomplete-suggestion:hover {
+    background: #585e62;
+}
+
+.TextEntryAutocomplete {
+    position: absolute;
+    width: 600px;
+    max-height: 200px;
+    background-color: #3d4448;
+    color: #e1e1e1;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.TextEntryAutocomplete > div {
+    width: 100%;
+    padding: 2px 8px;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: #3d4448;
+    font-size: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.TextEntryAutocomplete > div:hover {
+    background-color: #585e62;
+}
+
+#ResizeDragTarget {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    cursor: nwse-resize; /* 调整大小光标 */
+}
+
+#ResizeDragTarget:hover {
+    border-color: #999;
+}
+
+/* 在原有样式后添加 */
+/* 修改类型颜色定义 */
+.echo-line {
+    margin: 2px 0;
+    padding: 2px 4px;
+    font-family: 'Courier New', monospace;
+    border-left: 3px solid transparent;
+}
+
+.echo-command {
+    color: #ccc;
+    border-color: #ccc;
+}
+
+.echo-error {
+    color: #ff8888;
+    border-color: #ff4444;
+}
+
+.echo-warn {
+    color: #ffdd44;
+    border-color: #ffd700;
+}
+
+.echo-info {
+    color: #44ddff;
+    border-left: 3px solid #00bfff; /* 明确指定边框样式 */
+}
+
+.echo-debug {
+    color: #cccccc;
+    border-color: #999999;
+}

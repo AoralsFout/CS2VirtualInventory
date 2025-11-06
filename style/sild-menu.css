@@ -1,0 +1,239 @@
+.sild-title {
+    display: flex;
+    height: 6vh;
+    backdrop-filter: blur(20px);
+    background-color: #444444dd;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sild-title.friends {
+    background-color: #ffffff04;
+    backdrop-filter: blur(0px);
+}
+
+.sild-container {
+    height: 0vh;
+    flex-direction: column;
+    transition: height 0.3s ease;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    background-color: #222222bb;
+}
+
+.sild-icon {
+    display: flex;
+    width: 6vh;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.sild-icon.friend {
+    position: relative;
+    right: -15vh;
+}
+
+.sild-icon.broadcast svg {
+    width: 3vh;
+}
+
+.sild-icon svg {
+    width: 2vh;
+}
+
+.sild-containerTitle {
+    color: #e0e0e0;
+    transition: color 0.2s ease;
+    font-size: 1.8vh;
+    font-weight: lighter;
+}
+
+.sild-containerTitle:hover{
+    cursor: pointer;
+    color: #fff;
+}
+
+.sild-number {
+    position: absolute;
+    bottom: 0.4vh;
+    font-size: 1.2vh;
+    font-weight: lighter;
+}
+
+.sild-linemap {
+    position: relative;
+    opacity: 0.15;
+    width: 29.5vh;
+    height: 164vh;
+    margin-top: -84vh;
+    background-image: url("../images/topography.png");
+    background-repeat: repeat;
+    background-size: 160%;
+    background-position: -135px 16px;
+}
+
+.sild-item {
+    display: flex;
+    height: 5.3vh;
+    flex-direction: row;
+}
+
+.sild-ava {
+    position: relative;
+    padding: 0.8vh;
+    height: calc(5.3vh - 1.6vh);
+    width: calc(5.3vh - 1.6vh);
+    left: 0.3vh;
+}
+
+.sild-info {
+    padding: 1vh;
+}
+
+.sild-name {
+    font-size: 1.3vh;
+    height: 50%;
+}
+
+.sild-undername {
+    font-size: 1.3vh;
+    height: 50%;
+}
+
+#sild-menu {
+    position: absolute;
+    display: flex;
+    width: 29.5vh;
+    height: 100vh;
+    right: -23.7vh;
+    flex-direction: column;
+    box-shadow: 0vh 0vh 1vh #2d2d2d;
+    z-index: 10;
+    transition: right 0.3s ease;
+}
+
+#sild-menu:hover {
+    right: 0px;
+}
+
+#sild-broadcast-openBroadcast {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3vh;
+    font-weight: lighter;
+    align-items: center;
+    height: 4.5vh;
+}
+
+#sild-broadcast-btn{
+    padding: 1vh;
+}
+
+.sild-switch {
+    position: relative;
+    display: inline-block;
+    width: 3.8vh;
+    height: 1.7vh;
+}
+.sild-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.sild-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+    border-radius: 2vh;
+    box-shadow: inset 0px 0px 5px 0px #000000;
+}
+
+.sild-slider:before {
+    position: absolute;
+    content: "";
+    height: 1.3vh;
+    width: 1.3vh;
+    left: 0.2vh;
+    bottom: 0.25vh;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.sild-switch input:checked+.slider {
+    background-color: rgb(0, 255, 0);
+}
+
+.sild-switch input:checked+.slider:before {
+    transform: translateX(3.4vh);
+}
+
+#sild-broadcast-wt {
+    padding: 0.3vh;
+}
+
+#sild-broadcast-selectMode {
+    display: flex;
+    height: 3.6vh;
+}
+
+.sild-broadcast-icon {
+    position: relative;
+    display: flex;
+    width: 3.2vh;
+    height: 3.2vh;
+    padding: 0 0.8vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.sild-broadcast-icon svg{
+    width: 2vh;
+}
+
+.sild-broadcast-icon.refresh {
+    position: absolute;
+    right: 0;
+}
+
+.sild-broadcast-icon.active{
+    border-bottom: inset 0.3vh #fff;
+}
+
+#sild-broadcast-progress {
+    height: 0.5vh;
+    background-color: #dadada;
+    width: 80%;
+}
+
+#sild-broadcast-playerList {
+    padding-top: 0.3vh;
+}
+
+/* #sild-broadcast-playerRow {}
+
+#sild-broadcast-playerPrime {}
+
+#sild-broadcast-playerRank {}
+
+#sild-broadcast-playerNation {} */
+
+#sild-broadcast-invitePlayer {
+    padding: 1.8vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+}
+
+#sild-broadcast-invitePlayer svg{
+    width:2vh;
+    height: 2vh;
+}
