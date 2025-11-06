@@ -39,23 +39,23 @@
 ## images文件夹结构
 
 images  
-├── icon    游戏主页面svg图标  
+├── icon 游戏主页面svg图标  
 └── panorama  
-    └── images  
-        └── econ  
-            └── characters  
-            └── default_generated  
-            └── keychains   
-            └── music_kits   
-            └── patches   
-            └── premier_seasons   
-            └── season_icons       
-            └── set_icons     
-            └── status_icons    
-            └── stickers    
-            └── tools      
-            └── tournaments   
-            └── weapon_cases   
-            └── weapons   
-            └── wearables    
-    └──panorama \ images \ econ \ wearables \ gloves   
+&emsp;└── images  
+&emsp;&emsp;└── econ  
+&emsp;&emsp;&emsp;└── characters   
+&emsp;&emsp;&emsp;└── default_generated  
+&emsp;&emsp;&emsp;└── keychains   
+&emsp;&emsp;&emsp;└── music_kits   
+&emsp;&emsp;&emsp;└── patches    
+&emsp;&emsp;&emsp;└── premier_seasons     
+&emsp;&emsp;&emsp;└── season_icons   
+&emsp;&emsp;&emsp;└── set_icons    
+&emsp;&emsp;&emsp;└── status_icons    
+&emsp;&emsp;&emsp;└── stickers     
+&emsp;&emsp;&emsp;└── tools     
+&emsp;&emsp;&emsp;└── tournaments   
+&emsp;&emsp;&emsp;└── weapon_cases    
+&emsp;&emsp;&emsp;└── weapons     
+&emsp;&emsp;&emsp;└── wearables    
+&emsp;└──panorama \ images \ econ \ wearables \ gloves
