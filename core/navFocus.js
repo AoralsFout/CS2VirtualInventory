@@ -3,7 +3,7 @@ const canvas = document.getElementById('canvasNav');
 const ctx = canvas.getContext('2d');
 
 // 配置参数
-const CONFIG = {
+const CONFIG_NAV = {
     blockSizeVH: 1.65,
     spacingVH: 0.2,
     rows: 3,
@@ -36,11 +36,11 @@ function init() {
 function calculateSizes() {
     const toPx = vh => (vh * window.innerHeight) / 100;
 
-    state.blockSize = toPx(CONFIG.blockSizeVH);
-    state.spacing = toPx(CONFIG.spacingVH);
+    state.blockSize = toPx(CONFIG_NAV.blockSizeVH);
+    state.spacing = toPx(CONFIG_NAV.spacingVH);
 
-    canvas.width = CONFIG.cols * (state.blockSize + state.spacing) - state.spacing;
-    canvas.height = CONFIG.rows * (state.blockSize + state.spacing) - state.spacing;
+    canvas.width = CONFIG_NAV.cols * (state.blockSize + state.spacing) - state.spacing;
+    canvas.height = CONFIG_NAV.rows * (state.blockSize + state.spacing) - state.spacing;
 }
 
 //背景
@@ -56,8 +56,8 @@ function noise(x, w, timestamp, random) {
 
 // 初始化方块
 function initializeBlocks() {
-    state.blocks = Array.from({ length: CONFIG.rows }, (_, row) =>
-        Array.from({ length: CONFIG.cols }, (_, col) => ({
+    state.blocks = Array.from({ length: CONFIG_NAV.rows }, (_, row) =>
+        Array.from({ length: CONFIG_NAV.cols }, (_, col) => ({
             baseX: col * (state.blockSize + state.spacing),
             baseY: row * (state.blockSize + state.spacing),
             alpha: background(col, state.nowCenterX),
