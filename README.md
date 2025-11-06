@@ -4,7 +4,7 @@
 
 ## 启动项目
 
-使用浏览器打开 index.html 文件即可启动项目。
+使用浏览器打开 index.html 文件即可启动项目。  
 注意：您需要在浏览器里设置允许自动播放视频，否则启动动画会出现问题
 
 ## 功能介绍
@@ -23,7 +23,7 @@
 
 ## 数据获取
 
-数据来自于 CSGO-API : https://github.com/ByMykel/CSGO-API 
+数据来自于 CSGO-API : https://github.com/ByMykel/CSGO-API  
 我写的自动获取数据脚本仍有问题，需要手动通过 CSGO-API 获取数据。
 
 ### images文件夹
@@ -32,30 +32,30 @@
 
 ### getGameData文件夹
 
-其中的json文件夹应有 **all.json** 和 **tabel.json**
+其中的json文件夹应有 **all.json** 和 **tabel.json**  
 
 **tabel.json** 是通过 **extract.js** 从 **all.json** 中提取的信息。
 
 ## images文件夹结构
 
-images
-├── icon    游戏主页面svg图标
-└── panorama
-    └── images
-        └── econ
-            └── characters
-            └── default_generated
-            └── keychains
-            └── music_kits
-            └── patches
-            └── premier_seasons
-            └── season_icons
-            └── set_icons
-            └── status_icons
-            └── stickers
-            └── tools
-            └── tournaments
-            └── weapon_cases
-            └── weapons
-            └── wearables
-    └──panorama \ images \ econ \ wearables \ gloves
+images  
+├── icon    游戏主页面svg图标  
+└── panorama  
+    └── images  
+        └── econ  
+            └── characters  
+            └── default_generated  
+            └── keychains   
+            └── music_kits   
+            └── patches   
+            └── premier_seasons   
+            └── season_icons       
+            └── set_icons     
+            └── status_icons    
+            └── stickers    
+            └── tools      
+            └── tournaments   
+            └── weapon_cases   
+            └── weapons   
+            └── wearables    
+    └──panorama \ images \ econ \ wearables \ gloves   
