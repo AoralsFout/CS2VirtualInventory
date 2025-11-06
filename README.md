@@ -2,6 +2,11 @@
 
 这是一个基于 JavaScript 高仿 Counter-Skrike 2 库存的项目。
 
+
+![项目截图](./readme/1.png)
+![项目截图](./readme/2.png)
+
+
 ## 启动项目
 
 使用浏览器打开 index.html 文件即可启动项目。  
