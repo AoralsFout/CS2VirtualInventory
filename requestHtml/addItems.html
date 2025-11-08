@@ -28,3 +28,376 @@
 </div>
 
 <div id="detail-page" style="display: none;"></div>
+
+<style>
+    .filter-container {
+        margin-bottom: 1vh;
+        padding-bottom: 1vh;
+        flex-shrink: 0;
+    }
+
+    #category-button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .category-button {
+        font-size: 2vh;
+        font-weight: lighter;
+        height: 4vh;
+        width: 11vh;
+        border: 0px;
+        background-color: #444;
+        color: #ccc;
+        border-radius: 1vh;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .category-button:hover {
+        background-color: #485563;
+        color: white;
+    }
+
+    .category-button.active {
+        background-image: linear-gradient(60deg, #262b31 0%, #3c444d 100%);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    #weapon-select-container {
+        margin-top: 1vh;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        width: 55vh;
+    }
+
+    .dropdown-header {
+        width: 21vh;
+        padding: 1vh;
+        border: 0;
+        font-size: 2vh;
+        border-radius: 1vh;
+        cursor: pointer;
+        background-color: #444;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #ccc;
+    }
+
+    .dropdown-header .arrow {
+        font-size: 2vh;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: height 0.3s ease, padding 0.3s ease;
+    }
+
+    .dropdown-content.show {
+        font-size: 2vh;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1vh;
+        height: 50vh;
+        width: 44vh;
+        background-color: #444;
+        padding: 1vh;
+        position: fixed;
+    }
+
+    .weapon-option {
+        flex: 1 1 calc(25% - 1vh);
+        padding: 1vh;
+        cursor: pointer;
+        text-align: center;
+        background-color: #3b3b3b;
+        color: #ccc;
+        border-radius: 1vh;
+        transition: background-color 0.3s ease;
+    }
+
+    /* 设计窗口滚动条 */
+    #weapon-options::-webkit-scrollbar {
+        width: 6px;
+        /* 滚动条宽度 */
+    }
+
+    #weapon-options::-webkit-scrollbar-track {
+        background: #3b3b3b;
+        /* 滚动条轨道颜色 */
+        border-radius: 2px;
+    }
+
+    #weapon-options::-webkit-scrollbar-thumb {
+        background: #444;
+        /* 滚动条滑块颜色 */
+        border-radius: 2px;
+    }
+
+    #weapon-options::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        /* 滚动条滑块悬停颜色 */
+    }
+
+    #weapon-options:hover ::-webkit-scrollbar-thumb {
+        display: block;
+    }
+
+    .weapon-option:hover {
+        background-color: #444;
+    }
+
+    .weapon-option.active {
+        color: white;
+        background-image: linear-gradient(60deg, #262b31 0%, #3c444d 100%);
+    }
+
+    .category-button.active {
+        background-image: linear-gradient(60deg, #262b31 0%, #3c444d 100%);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .results-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+
+    .results-container::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 2px;
+        margin: 2px;
+    }
+
+    #results {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .result-item {
+        font-size: 2vh;
+        font-weight: normal;
+        padding: 1vh;
+        width: 100%;
+        background-color: #444;
+        color: #ccc;
+        border-radius: 1vh;
+    }
+
+    .pagination {
+        padding: 5px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-shrink: 0;
+        color: #ccc;
+    }
+
+    .search-container {
+        display: flex;
+        gap: 2vh;
+        margin-top: 1vh;
+    }
+
+    #search-input {
+        width: 50%;
+        font-size: 2vh;
+        color: #ccc;
+        flex: 1;
+        padding: 1vh;
+        border: 0;
+        border-radius: 1vh;
+        background-color: #444;
+    }
+
+    #search-button {
+        font-size: 2vh;
+        background-color: #444;
+        color: white;
+        border: none;
+        border-radius: 1vh;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #search-button:hover {
+        background-color: #485563;
+    }
+
+    .main-page {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #detail-page {
+        border-radius: 0.5vh;
+        background-color: #2d2d2d;
+        max-width: 600px;
+    }
+
+    #back-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #back-button:hover {
+        background-color: #0056b3;
+    }
+
+    .detail-top-section {
+        display: flex;
+        margin-bottom: 2vh;
+    }
+
+    .thumbnail {
+        display: flex;
+        width: 20vh;
+        height: 15vh;
+        background-color: #444;
+        border-radius: 0.5vh;
+        margin-right: 4vh;
+        justify-content: center;
+        align-items: center;
+        border-bottom: inset #fff 0.5vh;
+    }
+
+    .perview {
+        object-fit: cover;
+        width: 18vh;
+    }
+
+    .info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info span {
+        font-size: 15px;
+        font-weight: normal;
+    }
+
+    .info input {
+        background-color: #444;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: #ffffff;
+        margin-top: 10px;
+    }
+
+    .info input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0;
+    }
+
+    .detail-middle-section {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+    }
+
+    .attributes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .attribute-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: space-between;
+    }
+
+    .attribute-row label {
+        flex: 1;
+    }
+
+    .attribute-row input,
+    .attribute-row select {
+        flex: 2;
+        background-color: #444;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        color: #ffffff;
+    }
+
+    .wear-bar {
+        width: 290px;
+        height: 10px;
+        background: linear-gradient(to right, #00a90b, 7%, #39ff00, 15%, #ffa500, 38%, #ff7800, 45%, #610000);
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .wear-pointer {
+        width: 2px;
+        height: 15px;
+        background-color: #ffffff;
+        position: absolute;
+        top: -2.5px;
+        left: 0;
+        transition: left 0.3s ease;
+    }
+
+    .wear-label {
+        font-size: 12px;
+        color: #cccccc;
+    }
+
+    .detail-bottom-section {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .detail-bottom-section button {
+        background-color: #444;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: #ffffff;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .detail-bottom-section button:hover {
+        background-color: #555;
+    }
+
+    #randomWear {
+        position: absolute;
+        margin-left: 10px;
+        right: 20px;
+        box-shadow: inset 0px 0px 5px 0px #222;
+    }
+</style>

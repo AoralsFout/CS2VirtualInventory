@@ -1,3 +1,153 @@
+<style>
+    .two-column-layout {
+        display: flex;
+        gap: 1vh;
+    }
+
+    .column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
+
+    .column-container {
+        font-size: 2vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1vh;
+        background: #555;
+        border-radius: 1vh;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 4vh;
+        height: 2vh;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 2vh;
+        transition: background-color 0.3s ease;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 2vh;
+        width: 2vh;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider {
+        background-color: #4473a7;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(20px);
+    }
+
+    .item {
+        padding: 1vh;
+        background: #555;
+        border-radius: 1vh;
+    }
+
+    /* 比例选项样式 */
+    #ratio-select {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #555;
+        color: #fff;
+        border-radius: 0.3vh;
+        border: 0.1vh solid #333;
+        outline: none;
+    }
+
+    .one-column-layout {
+        margin-top: 1vh;
+    }
+
+    .setUser {
+        display: flex;
+        padding: 2vh;
+        background-color: #555;
+        border-radius: 1vh;
+        flex-direction: column;
+    }
+
+    .setUser input {
+        font-size: 2vh;
+    }
+
+    #setPerviewUserAvatar {
+        width: 16vh;
+        height: 16vh;
+    }
+
+    #requestStatus {
+        width: 100%;
+    }
+
+    .setUser input[type="button"] {
+        height: 6vh;
+    }
+
+    .getinfoColumn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .getinfoColumnInput {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .setUser .row.getInfo [type="button"] {
+        height: auto;
+        width: 7vh;
+    }
+
+    .setUser .row {
+        display: flex;
+        margin-top: 5px;
+        flex: 1;
+    }
+
+    .setUser .row label {
+        width: 40vh;
+    }
+
+    .setUser .row.getInfo input[type="text"] {
+        width: 30vh;
+        height: 3vh;
+    }
+
+    .setUser .row input[type="text"] {
+        width: 70vh;
+        height: 3vh;
+    }
+</style>
+
 <div class="two-column-layout">
     <div class="column">
         <div class="column-container">
@@ -22,7 +172,7 @@
     </div>
 </div>
 <div class="one-column-layout">
-    <div class="column-container setUser">
+    <div class="setUser">
         <div class="row">
             <span>用户设置</span>
         </div>
