@@ -29,17 +29,18 @@
 ## 数据获取
 
 数据来自于 CSGO-API : https://github.com/ByMykel/CSGO-API  
-我写的自动获取数据脚本仍有问题，需要手动通过 CSGO-API 获取数据。
 
 ### images文件夹
 
+我写的自动获取图像的脚本仍有问题，需要手动通过 CSGO-API 获取数据。
 除了四张图片外，还应有 **icon** , **panorama** 文件夹，他们的结构见下文 **images文件夹结构**
 
-### getGameData文件夹
+### data文件夹
 
 其中的json文件夹应有 **all.json** 和 **tabel.json**  
 
-**tabel.json** 是通过 **extract.js** 从 **all.json** 中提取的信息。
+**all.json** 是通过 **update.js** 从 **CSGO-API** 中获取的信息。  
+**tabel.json** 是通过 **update.js** 从 **all.json** 中提取的信息。
 
 ## images文件夹结构
 
