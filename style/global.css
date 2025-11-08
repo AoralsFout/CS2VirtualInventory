@@ -9,7 +9,7 @@ body {
     justify-content: center;
 }
 
-#intro-video{
+#intro-video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -124,7 +124,7 @@ body {
     color: rgb(126, 169, 204);
 }
 
-.icon-buttons{
+.icon-buttons {
     display: flex;
     z-index: 5;
 }
@@ -149,7 +149,7 @@ body {
     background-color: #ffffff40;
 }
 
-.icon-buttons button svg{
+.icon-buttons button svg {
     width: 2vh;
     height: 2vh;
 }
@@ -220,7 +220,7 @@ body {
 :root {
     --DraggabelWindowHeight: 70vh;
     --DraggabelWindowWidth: 100vh;
-  }
+}
 
 #draggable-window {
     flex-direction: column;
@@ -314,21 +314,25 @@ body {
 
 /* 设计窗口滚动条 */
 #content-body::-webkit-scrollbar {
-    width: 6px; /* 滚动条宽度 */
+    width: 6px;
+    /* 滚动条宽度 */
 }
 
 #content-body::-webkit-scrollbar-track {
-    background: #3b3b3b; /* 滚动条轨道颜色 */
+    background: #3b3b3b;
+    /* 滚动条轨道颜色 */
     border-radius: 2px;
 }
 
 #content-body::-webkit-scrollbar-thumb {
-    background: #444; /* 滚动条滑块颜色 */
+    background: #444;
+    /* 滚动条滑块颜色 */
     border-radius: 2px;
 }
 
 #content-body::-webkit-scrollbar-thumb:hover {
-    background: #555; /* 滚动条滑块悬停颜色 */
+    background: #555;
+    /* 滚动条滑块悬停颜色 */
 }
 
 #content-body:hover ::-webkit-scrollbar-thumb {
@@ -454,7 +458,9 @@ input:checked+.slider:before {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.one-column-layout{margin-top: 10px;}
+.one-column-layout {
+    margin-top: 10px;
+}
 
 .setUser {
     display: flex;
@@ -462,51 +468,54 @@ input:checked+.slider:before {
     align-items: stretch;
 }
 
-.setUser input{
+.setUser input {
     font-size: 2vh;
 }
 
-#setPerviewUserAvatar{
+#setPerviewUserAvatar {
     width: 16vh;
     height: 16vh;
 }
 
-#requestStatus{
+#requestStatus {
     width: 100%;
 }
 
-.setUser input[type="button"]{
+.setUser input[type="button"] {
     height: 6vh;
 }
 
-.getinfoColumn{
+.getinfoColumn {
     display: flex;
     flex-direction: column;
 }
 
-.getinfoColumnInput{
+.getinfoColumnInput {
     display: flex;
     flex-direction: row;
 }
 
-.setUser .row.getInfo [type="button"]{
+.setUser .row.getInfo [type="button"] {
     height: auto;
     width: 7vh;
 }
 
-.setUser .row{
+.setUser .row {
     display: flex;
     margin-top: 5px;
     flex: 1;
 }
 
-.setUser .row label{
+.setUser .row label {
     width: 40vh;
 }
 
-.setUser .row.getInfo input[type="text"]{width: 30vh;height: 3vh;}
+.setUser .row.getInfo input[type="text"] {
+    width: 30vh;
+    height: 3vh;
+}
 
-.setUser .row input[type="text"]{
+.setUser .row input[type="text"] {
     width: 70vh;
     height: 3vh;
 }
@@ -611,21 +620,25 @@ input:checked+.slider:before {
 
 /* 设计窗口滚动条 */
 #weapon-options::-webkit-scrollbar {
-    width: 6px; /* 滚动条宽度 */
+    width: 6px;
+    /* 滚动条宽度 */
 }
 
 #weapon-options::-webkit-scrollbar-track {
-    background: #3b3b3b; /* 滚动条轨道颜色 */
+    background: #3b3b3b;
+    /* 滚动条轨道颜色 */
     border-radius: 2px;
 }
 
 #weapon-options::-webkit-scrollbar-thumb {
-    background: #444; /* 滚动条滑块颜色 */
+    background: #444;
+    /* 滚动条滑块颜色 */
     border-radius: 2px;
 }
 
 #weapon-options::-webkit-scrollbar-thumb:hover {
-    background: #555; /* 滚动条滑块悬停颜色 */
+    background: #555;
+    /* 滚动条滑块悬停颜色 */
 }
 
 #weapon-options:hover ::-webkit-scrollbar-thumb {
@@ -896,9 +909,31 @@ input::-webkit-inner-spin-button {
     box-shadow: inset 0px 0px 5px 0px #222;
 }
 
+/* 导航栏聚焦 */
 #canvasNav {
     position: absolute;
     top: 0.3vh;
     left: 50%;
     transform: translateX(-50%);
+}
+
+/* config.html */
+#load-config-btn,
+#save-config-btn {
+    font-size: 2vh;
+    font-weight: lighter;
+    height: 4vh;
+    width: 11vh;
+    border: 0px;
+    background-color: #444;
+    color: #ccc;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#load-config-btn:hover,
+#save-config-btn:hover {
+    background-color: #485563;
+    color: #fff;
 }

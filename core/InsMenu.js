@@ -115,7 +115,7 @@ function saveSettings() {
         status.innerHTML = '保存中...'
         setTimeout(() => {
             isSavingStatus = false;
-            echo('client', 'INFO', null, '设置已更新:'+ JSON.stringify(appSettings));
+            echo('client', 'INFO', null, '设置已更新:' + JSON.stringify(appSettings));
             status.innerHTML = '保存成功!想要下次进入页面时使用您的设置，请前往‘设置导入/导出’栏保存您的设置文件到本地'
             applySettings();
         }, 500);
@@ -142,24 +142,24 @@ function getSteamUserInfo() {
         btn.disabled = false;
         return;
     }
-    const proxyUrl = `http://localhost:3000/getSteamUserInfo?steamId=${id}`;
+    const proxyUrl = `http://localhost:3000/getSteamUserInfo?steamId=${id}&t=${Date.now()}`;
 
     fetch(proxyUrl)
         .then(response => {
             if (!response.ok) {
-                echo("sever", 'ERROR', null, '请求失败:'+ response.statusText);
+                echo("sever", 'ERROR', null, '请求失败:' + response.statusText);
             }
             return response.json();
         })
         .then(data => {
-            const player = data.response.players[0];
+            const player = data.data
             document.getElementById("setUserName").value = player.personaname;
             document.getElementById("setUserAvatar").value = player.avatarfull;
             document.getElementById("setPerviewUserAvatar").setAttribute("src", player.avatarfull);
             status.innerHTML = '请求成功';
         })
         .catch(error => {
-            echo(null, 'ERROR', null, '请求失败:'+ error.message);
+            echo(null, 'ERROR', null, '请求失败:' + error.message);
             status.innerHTML = '<span style="color:#ffbf00">请求失败，请尝试使用加速器加速Steam社区后再试。<br>请求资源有时间间隔限制，如果您之前进行过一次成功请求，请稍后重试。</span>';
         })
         .finally(() => {
@@ -182,7 +182,7 @@ async function loadContent(url) {
 // 更新右侧内容
 async function updateContent(index) {
     const contentElement = document.getElementById('content-body');
-    let urlMap = ['regular.html', 'addItems.html'];
+    let urlMap = ['regular.html', 'addItems.html', 'deleteItems.html','config.html'];
     if (index < urlMap.length) {
         contentElement.innerHTML = await loadContent(urlMap[index]);
     }
@@ -191,14 +191,19 @@ async function updateContent(index) {
             updateSettingsUI();//更新设置UI
             bindSettingEvents();//保存设置按钮
             break;
-        case 1:
-            fetch('getGameData/json/tabel.json')
+        case 1: //新增物品页
+            fetch('data/json/tabel.json')
                 .then(response => response.json())
                 .then(data => {
                     echo("sever", 'INFO', null, '加载数据成功');
                     initializeAddItems(data)//初始化新增物品界面
                 })
-                .catch(error => echo(null, 'ERROR', null, '加载数据失败:'+ error.message));
+                .catch(error => echo(null, 'ERROR', null, '加载数据失败:' + error.message));
+            break;
+        case 2: //删除物品页
+            break;
+        case 3: //配置页
+            initializeConfig();//初始化配置
             break;
         default:
             break;

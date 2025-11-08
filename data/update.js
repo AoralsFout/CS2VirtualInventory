@@ -1,3 +1,9 @@
+/**
+ * 更新数据
+ * all.json     所有物品数据
+ * table.json   精简物品数据，用于菜单增加物品时展示筛选选项
+*/
+
 const fs = require('fs');
 const axios = require('axios');
 const path = require('path');

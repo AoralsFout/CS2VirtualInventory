@@ -186,7 +186,7 @@ function showDetailPage(itemId) {
     // 显示新页面
     document.getElementById('detail-page').style.display = 'block';
     document.getElementById("detail-page").innerHTML = "加载中，请稍候..."
-    fetch('getGameData/json/all.json')
+    fetch('data/json/all.json')
         .then(response => response.json())
         .then(data => {
             echo("sever", 'INFO', null, '加载数据成功');

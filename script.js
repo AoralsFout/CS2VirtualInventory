@@ -2,7 +2,6 @@
 
 // 全局设置
 let appSettings = {};
-
 let isSettingLoaded = false;
 
 // 初始化设置
@@ -22,6 +21,7 @@ async function initSettings() {
 
 initSettings()
 
+// 加载资源
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading-screen');
     const progressBar = document.getElementById('loading-progress');
