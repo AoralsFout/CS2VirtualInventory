@@ -1,3 +1,5 @@
+// 控制台交互逻辑
+
 // 交互逻辑
 (function () {
     const consolePanel = document.querySelector('.ConsolePanel');
@@ -190,6 +192,9 @@
 let CONFIG = {
     "sv_cheat": false
 }
+
+// echo函数
+// 用于在控制台输出信息，支持不同来源、类型、函数名和详细信息
 
 // 基本格式
 // echo('Network', 'INFO', 'Received data packet'); 

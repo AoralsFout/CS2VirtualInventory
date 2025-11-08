@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 // 读取 all.json 文件
-fs.readFile('csTools/VirtualInventory/all.json', 'utf8', (err, data) => {
+fs.readFile('getGameData/json/all.json', 'utf8', (err, data) => {
   if (err) {
     console.error('Error reading all.json:', err);
     return;
@@ -86,7 +86,7 @@ fs.readFile('csTools/VirtualInventory/all.json', 'utf8', (err, data) => {
     }
 
     // 将分类后的数据保存到 tabel.json 文件中
-    fs.writeFile('csTools/VirtualInventory/tabel.json', JSON.stringify(tabel, null, 2), (err) => {
+    fs.writeFile('getGameData/json/tabel.json', JSON.stringify(tabel, null, 2), (err) => {
       if (err) {
         console.error('Error writing tabel.json:', err);
       } else {
