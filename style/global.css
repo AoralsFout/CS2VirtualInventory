@@ -10,6 +10,19 @@ body {
     height: 100vh;
 }
 
+input[type="text"] {
+    padding: 1vh;
+    border: 0.1vh solid #333;
+    border-radius: 1vh;
+    background-color: #333;
+    color: #ccc;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
 #intro-video {
     position: absolute;
     top: 50%;
