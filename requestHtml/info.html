@@ -1,0 +1,201 @@
+<style>
+    .info-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .info-header {
+        text-align: center;
+        padding: 40px 0;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-header h1 {
+        font-size: 3rem;
+        background: linear-gradient(45deg, #452db3, #4ecdc4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-header .subtitle {
+        font-size: 1.2rem;
+        color: #b8b8b8;
+        margin-bottom: 20px;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card h2 {
+        color: #4ecdc4;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        border-bottom: 2px solid #4ecdc4;
+        padding-bottom: 10px;
+    }
+
+    .feature-list {
+        list-style: none;
+    }
+
+    .feature-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+    }
+
+    .feature-list li:before {
+        content: "-";
+        color: #4ecdc4;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .warning-box {
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .warning-box h3 {
+        color: #ff6b6b;
+        margin-bottom: 10px;
+    }
+
+    .license-info {
+        background: rgba(78, 205, 196, 0.1);
+        border: 1px solid rgba(78, 205, 196, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+    }
+
+    .contact-item i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+        color: #4ecdc4;
+    }
+
+    .info-footer {
+        text-align: center;
+        padding: 30px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        color: #b8b8b8;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .info-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="info-container">
+    <div class="info-header">
+        <h1>VirtualInventory</h1>
+        <div class="subtitle">Counter Strike 2 游戏主页面高仿项目</div>
+    </div>
+
+    <div class="content-grid">
+        <div class="card">
+            <h2>项目概述</h2>
+            <p>VirtualInventory 是一个高度还原 Counter Strike 2 游戏主页面的 Web 应用程序。</p>
+
+            <h3>主要特性：</h3>
+            <ul class="feature-list">
+                <li>完整的 CS2 风格界面设计</li>
+                <li>库存系统</li>
+                <li>好友列表</li>
+                <li>游戏模式选择界面</li>
+                <li>控制台面板功能</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>开源许可证</h2>
+            <div class="license-info">
+                <h3>MIT License</h3>
+                <p>Copyright (c) 2025 AoralsFout</p>
+                <p>本项目采用 MIT 开源许可证，允许自由使用、修改和分发，但需保留原始版权声明。</p>
+            </div>
+
+            <h3>使用条款：</h3>
+            <ul class="feature-list">
+                <li>允许商业使用</li>
+                <li>允许修改和分发</li>
+                <li>允许私人使用</li>
+                <li>保留版权声明</li>
+                <li>不提供质量担保</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>重要声明</h2>
+            <div class="warning-box">
+                <h3>禁止用于诈骗</h3>
+                <p>本项目仅供学习和开发参考，严禁用于任何形式的欺骗、诈骗或非法活动。</p>
+            </div>
+
+            <div class="warning-box">
+                <h3>免责声明</h3>
+                <p>作者不对因使用本项目而产生的任何直接或间接损失负责。使用者需自行承担风险。</p>
+            </div>
+
+            <h3>使用限制：</h3>
+            <ul class="feature-list">
+                <li>禁止用于冒充诈骗</li>
+                <li>禁止冒充官方应用</li>
+                <li>禁止用于非法活动</li>
+                <li>遵守当地法律法规</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-footer">
+        <p>© 2025 VirtualInventory Project. 保留所有权利。</p>
+        <p>本项目与 Valve Corporation 或 Counter-Strike 系列游戏无官方关联。</p>
+        <p>仅供学习和开发参考使用。</p>
+    </div>
+</div>

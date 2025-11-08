@@ -5,6 +5,7 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
@@ -28,7 +29,7 @@ app.get('/getSteamUserInfo', async (req, res) => {
         // 调用Steam Web API获取用户信息
         const response = await axios.get(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/`, {
             params: {
-                key: process.env.STEAM_API_KEY || 'DAB8E9390FACD978F4A89A222F50F71B',
+                key: process.env.STEAM_API_KEY,
                 steamids: steamId
             },
             timeout: 10000 // 10秒超时
@@ -49,7 +50,7 @@ app.get('/getSteamUserInfo', async (req, res) => {
         }
 
     } catch (error) {
-        console.error('Steam API请求错误:', error);
+        console.error('Steam API请求错误:', error.message);
         
         if (error.response) {
             // Steam API返回的错误

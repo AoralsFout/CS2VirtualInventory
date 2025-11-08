@@ -10,6 +10,12 @@
 ## 启动项目
 
 使用浏览器打开 index.html 文件即可启动项目基础功能。
+创建 .env 文件，添加 STEAM_API_KEY 环境变量。
+```
+# Steam Web API Key
+# 从 https://steamcommunity.com/dev/apikey 获取
+STEAM_API_KEY=your_steam_api_key
+```
 启动 /proxy/server.js 即可启用代理服务器，用于获取 Steam 用户信息。
 注意：您需要在浏览器里设置允许自动播放视频，否则启动动画会出现问题
 

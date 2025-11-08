@@ -916,24 +916,3 @@ input::-webkit-inner-spin-button {
     left: 50%;
     transform: translateX(-50%);
 }
-
-/* config.html */
-#load-config-btn,
-#save-config-btn {
-    font-size: 2vh;
-    font-weight: lighter;
-    height: 4vh;
-    width: 11vh;
-    border: 0px;
-    background-color: #444;
-    color: #ccc;
-    border-radius: 1vh;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#load-config-btn:hover,
-#save-config-btn:hover {
-    background-color: #485563;
-    color: #fff;
-}

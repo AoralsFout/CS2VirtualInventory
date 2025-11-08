@@ -182,7 +182,7 @@ async function loadContent(url) {
 // 更新右侧内容
 async function updateContent(index) {
     const contentElement = document.getElementById('content-body');
-    let urlMap = ['regular.html', 'addItems.html', 'deleteItems.html','config.html'];
+    let urlMap = ['regular.html', 'addItems.html', 'deleteItems.html','config.html','info.html'];
     if (index < urlMap.length) {
         contentElement.innerHTML = await loadContent(urlMap[index]);
     }
@@ -204,6 +204,8 @@ async function updateContent(index) {
             break;
         case 3: //配置页
             initializeConfig();//初始化配置
+            break;
+        case 4: //信息页
             break;
         default:
             break;
