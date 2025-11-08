@@ -88,7 +88,6 @@ app.get('/', (req, res) => {
         message: 'VirtualInventory 代理服务器运行中',
         endpoints: {
             '/getSteamUserInfo': '获取Steam用户信息',
-            '/proxy/*': '通用API代理',
             '/health': '健康检查'
         },
         usage: 'http://localhost:3000/getSteamUserInfo?steamId=STEAM_ID'
