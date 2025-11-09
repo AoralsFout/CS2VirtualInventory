@@ -24,22 +24,40 @@
     <!-- <button id="loading-confirm"></button> -->
     <div id="loading-progress" style="display: none"></div>
   </div>
-  <div id="window" class="main" style="aspect-ratio: 16/9; transform: scale(1,1)">
-    <div class="ConsolePanel" id="ConsolePanel" tabindex="-1">
-      <div class="MainContents" id="MainContents">
-        <div id="Header" class="draggable">
-          <span id="Title" class="unlocalized">Console</span>
-          <div class="FillWidth"></div>
-          <button id="CloseButton" class="unlocalized" onclick="CloseConsole()">
-            ×
-          </button>
-        </div>
-        <div id="ConsoleLog">
-          <div id="ConsoleText" class="console-output" data-allow-oversized="1"></div>
-        </div>
-        <div id="ConsoleInput" class="autocomplete-bottom" contenteditable="true"></div>
+  <div class="ConsolePanel" id="ConsolePanel" tabindex="-1">
+    <div class="MainContents" id="MainContents">
+      <div id="Header" class="draggable">
+        <span id="Title" class="unlocalized">Console</span>
+        <div class="FillWidth"></div>
+        <button id="CloseButton" class="unlocalized" onclick="CloseConsole()">
+          ×
+        </button>
       </div>
-      <div id="ResizeDragTarget" class="draggable"></div>
+      <div id="ConsoleLog">
+        <div id="ConsoleText" class="console-output" data-allow-oversized="1"></div>
+      </div>
+      <div id="ConsoleInput" class="autocomplete-bottom" contenteditable="true"></div>
+    </div>
+    <div id="ResizeDragTarget" class="draggable"></div>
+  </div>
+  <div id="window" class="main" style="aspect-ratio: 16/9; transform: scale(1,1)">
+    <div class="new-item" id="new-item" style="display: none;">
+      <div class="new-item-container">
+        <div class="new-item-bar" id="new-item-bar"></div>
+        <div class="new-item-content">
+          <div class="new-item-image">
+            <img src="" alt="" id="new-item-image-src">
+          </div>
+          <div class="new-item-title" id="new-item-title">新物品</div>
+          <div class="new-item-name" id="new-item-name"></div>
+          <div class="new-item-actions">
+            <div class="new-item-button">在武器装备中查看</div>
+            <button class="new-item-button" onclick="continueNewItem()">继续</button>
+          </div>
+          <div class="video-mask" id="new-item-video-mask"></div>
+          <video src="ui_item_presenr_vpcf/合成 1.mp4" loop autoplay muted no-controls class="new-item-video" id="new-item-video"></video>
+        </div>
+      </div>
     </div>
     <div id="sild-menu">
       <div id="sild-friends-title" class="sild-title friends">
@@ -470,6 +488,7 @@
   <script src="core/console.js"></script>
   <script src="script.js"></script>
   <script src="core/InsMenu.js"></script>
+  <script src="core/newItem.js"></script>
   <script src="core/navFocus.js"></script>
   <script src="core/renderInventory.js"></script>
   <script src="core/renderAddItems.js"></script>

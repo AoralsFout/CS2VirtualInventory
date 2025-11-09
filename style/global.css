@@ -103,6 +103,7 @@ input[type="text"]:focus {
     /* background-image: url('../参考/参考3840x2160.jpg'); */
     /* background-image: url('../参考/屏幕截图(1).png'); */
     /* background-image: url('../参考/屏幕截图(4).png'); */
+    /* background-image: url('../参考/new.png'); */
     background-image: url('../images/临时背景.png');
     /* background-position-y: -30px; */
     background-size: cover;
@@ -361,4 +362,143 @@ input[type="text"]:focus {
     top: 0.3vh;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.new-item {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #00000080;
+    z-index: 1;
+    /* opacity: 0.5; */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.new-item-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 100vh;
+    height: 53vh;
+    background-color: #000;
+    border: 0.1vh solid #404040;
+    display: flex;
+    flex-direction: row;
+    transform-origin: center center;
+    opacity: 0;
+    animation: new-item-in 0.3s ease-in-out forwards;
+}
+
+@keyframes new-item-in {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.new-item-bar {
+    position: absolute;
+    left: 0;
+    width: 1.3vh;
+    height: 100%;
+    background-color: #f00;
+    z-index: 1;
+}
+
+.new-item-bar::before {
+    content: '';
+    display: block;
+    width: 1.3vh;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000 0%, #0000007c 100%);
+}
+
+.new-item-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.video-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff000080;
+    mix-blend-mode: soft-light;
+    z-index: -1;
+}
+
+.new-item-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.new-item-title {
+    font-size: 5.2vh;
+    color: #f00;
+    position: absolute;
+    top: 2.7vh;
+    left: 9.1vh;
+}
+
+.new-item-name {
+    font-size: 2.2vh;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    bottom: 8.8vh;
+    left: 8.9vh;
+}
+
+.new-item-actions {
+    width: 93.8%;
+    position: absolute;
+    padding: 0.3vh 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    border-top: 0.1vh solid #404040;
+    bottom: 1vh;
+    padding-top: 1vh;
+}
+
+.new-item-button {
+    font-size: 1.8vh;
+    letter-spacing: 0.1vh;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0000;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 2vh;
+    margin-right: 1.4vh;
+}
+
+.new-item-image{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height: 50%;
+}
+
+.new-item-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

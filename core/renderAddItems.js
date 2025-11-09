@@ -364,6 +364,7 @@ function showDetailPage(itemId) {
                     }
                     // closeWindow()
                     renderInventory(inventoryData)
+                    showNewItem(object.rarity.color, object.name, object.image)
                 });
             } else {
                 object = data[itemId];
