@@ -13,6 +13,9 @@ async function initSettings() {
             appSettings = settingData.setting;
             appSettings.inventoryData = settingData.inventoryData; // 添加库存数据
             isSettingLoaded = true;
+            applySettings();
+            console.log("加载设置成功");
+            console.log(appSettings);
         } catch (error) {
             echo(null, 'ERROR', null, '加载设置失败: ' + error.message);
         }

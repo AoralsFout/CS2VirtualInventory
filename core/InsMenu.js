@@ -100,6 +100,8 @@ let isSavingStatus = false;
 
 // 保存设置
 function saveSettings() {
+    console.log(appSettings);
+    
     const status = document.getElementById('saveingStatus');
     if (isSavingStatus) {
         return

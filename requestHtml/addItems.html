@@ -29,6 +29,84 @@
 
 <div id="detail-page" style="display: none;"></div>
 
+<!-- 动态加载其他物品页 -->
+<!-- <div class="container">
+    <div class="detail-top-section">
+        <div>
+            <div class="thumbnail" style="border-bottom: inset ${object.rarity.color} 0.5vh;">
+                <img src="${object.image}" class="perview">
+            </div>
+            <div class="info">
+                <span style="color:${object.rarity.color};">${object.name}</span>
+                <input type="number" id="itemQuantity" placeholder="添加数量" value="1">
+                <span style="font-size:2vh;color:'red'" id="addtip"></span>
+            </div>
+        </div>
+        <div class="detail-bottom-section">
+            <button id="backBtn">返回</button>
+            <button id="confirmBtn">确认</button>
+        </div>
+    </div>
+</div> -->
+
+<!-- 动态加载饰品详情页 -->
+<!-- <div class="container">
+    <div class="detail-top-section">
+        <div class="thumbnail" style="border-bottom: inset ${object.rarity.color} 0.5vh;">
+            <img src="${object.image}" class="perview">
+        </div>
+        <div class="info">
+            <span style="color:${object.rarity.color};">${object.weapon.name} | ${object.pattern.name}</span>
+            <input type="number" id="itemQuantity" placeholder="添加数量" value="1">
+            <span style="font-size:2vh;color:'red'" id="addtip"></span>
+        </div>
+    </div>
+    <div class="detail-middle-section">
+        <div class="attributes">
+            <div class="attribute-row">
+                <label for="patternTemplate">图案模板</label>
+                <input type="number" id="patternTemplate">
+            </div>
+            <div class="attribute-row">
+                <label for="skinNumber">皮肤编号</label>
+                <input disabled type="number" id="skinNumber" value="${object.paint_index}">
+            </div>
+            <div class="attribute-row">
+                <label for="wear">磨损</label>
+                <span style="font-size:20px">0.</span><input type="number" id="wear" min="0" max="99999999999999999">
+                <input type="button" id="randomWear" value="随机">
+            </div>
+            <div class="attribute-row wearContext">
+                <div>
+                    <label>磨损等级</label>
+                    <span class="wear-label">崭新出厂</span>
+                </div>
+                <div class="wear-bar">
+                    <div class="wear-pointer"></div>
+                </div>
+            </div>
+            <div class="attribute-row">
+                <label for="type">类型</label>
+                <select id="type">
+                    <option value="普通">普通</option>
+                    <option value="StatTrak™">StatTrak™</option>
+                    <option value="★">★</option>
+                    <option value="★ StatTrak™">★ StatTrak™</option>
+                    <option value="纪念品">纪念品</option>
+                </select>
+            </div>
+            <div class="attribute-row" id="stattrakRow" style="display: none;">
+                <label for="stattrakCount">StatTrak™ 数目</label>
+                <input type="number" id="stattrakCount">
+            </div>
+        </div>
+    </div>
+    <div class="detail-bottom-section">
+        <button id="backBtn">返回</button>
+        <button id="confirmBtn">确认</button>
+    </div>
+</div> -->
+
 <style>
     .filter-container {
         margin-bottom: 1vh;
@@ -48,7 +126,8 @@
         font-weight: lighter;
         height: 4vh;
         width: 11vh;
-        border: 0px;
+        border: 0;
+        padding: 0.5vh;
         background-color: #444;
         color: #ccc;
         border-radius: 1vh;
@@ -128,22 +207,26 @@
         transition: background-color 0.3s ease;
     }
 
+    .container input{
+        outline: none;
+    }
+
     /* 设计窗口滚动条 */
     #weapon-options::-webkit-scrollbar {
-        width: 6px;
+        width: 1vh;
         /* 滚动条宽度 */
     }
 
     #weapon-options::-webkit-scrollbar-track {
         background: #3b3b3b;
         /* 滚动条轨道颜色 */
-        border-radius: 2px;
+        border-radius: 1vh;
     }
 
     #weapon-options::-webkit-scrollbar-thumb {
         background: #444;
         /* 滚动条滑块颜色 */
-        border-radius: 2px;
+        border-radius: 1vh;
     }
 
     #weapon-options::-webkit-scrollbar-thumb:hover {
@@ -179,20 +262,20 @@
     }
 
     .results-container::-webkit-scrollbar {
-        width: 5px;
+        width: 1vh;
     }
 
     ::-webkit-scrollbar-thumb {
         background: #555;
-        border-radius: 2px;
-        margin: 2px;
+        border-radius: 1vh;
+        margin: 2vh;
     }
 
     #results {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
+        gap: 0.5vh;
     }
 
     .result-item {
@@ -206,12 +289,16 @@
     }
 
     .pagination {
-        padding: 5px;
+        padding: 2vh;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         flex-shrink: 0;
         color: #ccc;
+    }
+
+    #page-info {
+        font-size: 2vh;
     }
 
     .search-container {
@@ -239,6 +326,7 @@
 
     #search-button {
         font-size: 2vh;
+        padding: 1vh;
         background-color: #444;
         color: white;
         border: none;
@@ -259,16 +347,15 @@
 
     #detail-page {
         border-radius: 0.5vh;
-        background-color: #2d2d2d;
-        max-width: 600px;
+        font-size: 2vh;
     }
 
     #back-button {
-        padding: 10px 20px;
+        padding: 2vh 4vh;
         background-color: #007bff;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 1vh;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
@@ -306,17 +393,18 @@
     }
 
     .info span {
-        font-size: 15px;
+        font-size: 2vh;
         font-weight: normal;
     }
 
     .info input {
         background-color: #444;
         border: none;
-        border-radius: 5px;
-        padding: 10px;
+        border-radius: 1vh;
+        padding: 1vh;
         color: #ffffff;
-        margin-top: 10px;
+        margin-top: 2vh;
+        font-size: 2vh;
     }
 
     .info input::-webkit-outer-spin-button,
@@ -328,7 +416,7 @@
     .detail-middle-section {
         flex: 1;
         overflow-y: auto;
-        margin-bottom: 20px;
+        margin-bottom: 2vh;
     }
 
     .attributes {
@@ -339,12 +427,17 @@
     .attribute-row {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 1vh;
         justify-content: space-between;
     }
 
     .attribute-row label {
         flex: 1;
+        font-size: 2vh;
+    }
+
+    .attribute-row span {
+        font-size: 2vh;
     }
 
     .attribute-row input,
@@ -352,31 +445,33 @@
         flex: 2;
         background-color: #444;
         border: none;
-        border-radius: 5px;
-        padding: 5px;
+        border-radius: 1vh;
+        padding: 1vh;
         color: #ffffff;
+        font-size: 2vh;
     }
 
     .wear-bar {
-        width: 290px;
-        height: 10px;
+        width: 29vh;
+        height: 1.5vh;
         background: linear-gradient(to right, #00a90b, 7%, #39ff00, 15%, #ffa500, 38%, #ff7800, 45%, #610000);
-        border-radius: 5px;
+        border-radius: 1vh;
         position: relative;
     }
 
     .wear-pointer {
-        width: 2px;
-        height: 15px;
+        width: 0.3vh;
+        height: 2vh;
         background-color: #ffffff;
         position: absolute;
-        top: -2.5px;
+        top: 50%;
+        transform: translateY(-50%);
         left: 0;
         transition: left 0.3s ease;
     }
 
     .wear-label {
-        font-size: 12px;
+        font-size: 1vh;
         color: #cccccc;
     }
 
@@ -388,11 +483,12 @@
     .detail-bottom-section button {
         background-color: #444;
         border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
+        border-radius: 1vh;
+        padding: 1vh 2vh;
         color: #ffffff;
         cursor: pointer;
-        margin-left: 10px;
+        margin-left: 1vh;
+        font-size: 1.5vh;
         transition: background-color 0.3s ease;
     }
 
@@ -402,8 +498,6 @@
 
     #randomWear {
         position: absolute;
-        margin-left: 10px;
-        right: 20px;
-        box-shadow: inset 0px 0px 5px 0px #222;
+        right: 2vh;
     }
 </style>

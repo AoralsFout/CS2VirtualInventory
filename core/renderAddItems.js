@@ -218,7 +218,7 @@ function showDetailPage(itemId) {
                                 </div>
                                 <div class="attribute-row">
                                     <label for="wear">磨损</label>
-                                    <span style="font-size:20px">0.</span><input type="number" id="wear" min="0" max="99999999999999999">
+                                    <span>0.</span><input type="number" id="wear" min="0" max="99999999999999999">
                                     <input type="button" id="randomWear" value="随机">
                                 </div>
                                 <div class="attribute-row wearContext">
