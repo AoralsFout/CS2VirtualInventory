@@ -8,16 +8,17 @@ let paintData = null;
 
 // 模型基础路径
 const modelBasePath = 'models/weapons/models/';
+const legacyModelBasePath = 'models/weapons/legacyModels/';
 
 window.addEventListener('showNewItem', (event) => {
     console.log("收到了消息", event.detail);
     if (event.detail && event.detail.name) {
-        loadItemByName(event.detail.name);
+        loadItemByName(event.detail.name, event.detail.legacy_model);
     }
 });
 
 // 根据名称加载物品
-async function loadItemByName(itemName) {
+async function loadItemByName(itemName, legacy_model) {
     try {
         console.log("开始加载物品:", itemName);
         
@@ -51,7 +52,7 @@ async function loadItemByName(itemName) {
         init3D();
 
         // 加载模型和贴图
-        await loadModelWithTextures(modelFileName, textureData);
+        await loadModelWithTextures(modelFileName, textureData, legacy_model);
         
         console.log("物品加载完成");
 
@@ -61,10 +62,10 @@ async function loadItemByName(itemName) {
 }
 
 // 加载模型和贴图
-function loadModelWithTextures(modelFileName, textureUrls) {
+function loadModelWithTextures(modelFileName, textureUrls, legacy_model) {
     return new Promise((resolve, reject) => {
         const loader = new THREE.OBJLoader();
-        const modelPath = `${modelBasePath}${modelFileName}.obj`;
+        const modelPath = `${legacy_model ? legacyModelBasePath : modelBasePath}${modelFileName}.obj`;
         
         console.log("加载模型路径:", modelPath);
 

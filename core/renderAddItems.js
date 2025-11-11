@@ -364,7 +364,7 @@ function showDetailPage(itemId) {
                     }
                     // closeWindow()
                     renderInventory(inventoryData)
-                    showNewItem(object.rarity.color, object.name, object.image)
+                    showNewItem(object.rarity.color, object.name, object.legacy_model)
                 });
             } else {
                 object = data[itemId];

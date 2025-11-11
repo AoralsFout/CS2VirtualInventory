@@ -2,7 +2,7 @@ function continueNewItem() {
     document.getElementById('new-item').style.display = 'none';
 }
 
-function showNewItem(color, name) {
+function showNewItem(color, name, legacy_model) {
     continueNewItem();
     const noWareName = name.split(' (')[0].replace(/\s/g,'');
     const e = new CustomEvent('showNewItem',{
@@ -10,6 +10,7 @@ function showNewItem(color, name) {
         cancelable: true,
         detail: {
             name: noWareName,
+            legacy_model,
         }
     });
     document.dispatchEvent(e);
