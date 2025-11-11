@@ -23,7 +23,7 @@ npm install
 STEAM_API_KEY=your_steam_api_key
 # Buff.163.com Session
 # 登录 https://buff.163.com 后通过浏览器开发者工具获取 Session
-BUFF_SESSION=your_buff_session
+BUFF_SESSION="session=1-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 启动 /proxy/server.js 即可启用代理服务器，用于获取 Steam 用户信息。
 

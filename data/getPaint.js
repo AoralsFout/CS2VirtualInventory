@@ -7,6 +7,9 @@ dotenv.config();
 
 const session = process.env.BUFF_SESSION;
 
+console.log(session);
+
+
 class BuffAccount {
     constructor(buffCookie, userAgent = BuffAccount.getRandomUA()) {
         this.jar = new CookieJar();
@@ -109,11 +112,14 @@ async function processData(jsonData) {
         for (const key in jsonData) {
             if (jsonData.hasOwnProperty(key)) {
                 const item = jsonData[key];
-                const { original } = item;
-
+                const { original, legacy_model, weapon, pattern } = item;
                 // 处理 skin 前缀的数据
-                if (key.startsWith('skin-')) {
-                    weapon_name[original.name] = original.name
+                if (key.startsWith('skin-') && weapon && pattern) {
+                    const k = `${weapon.name}\|${pattern.name}`.replace(/\s/g, "");
+                    weapon_name[original.name] = original.name;
+                    paint[k] = {
+                        legacy_model
+                    }
                 }
             }
         }
@@ -136,12 +142,13 @@ async function processData(jsonData) {
                     continue;
                 }
                 customInspect.skins.forEach(skin => {
-                    paint[`${skin.weapon_name_desc} | ${skin.skin_name}`] = {
+                    const k = `${skin.weapon_name_desc}\|${skin.skin_name}`.replace(/\s/g, "");
+                    paint[k] = {
+                        ...paint[k],
                         texture_url: skin.texture_url,
                         model_name: key
                     }
                 });
-                await new Promise(resolve => setTimeout(resolve, 500));
             } catch (error) {
                 console.error('❌ 获取材质时出错:', error.message);
             }

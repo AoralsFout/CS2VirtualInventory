@@ -4,7 +4,7 @@ function continueNewItem() {
 
 function showNewItem(color, name) {
     continueNewItem();
-    const noWareName = name.split(' (')[0];
+    const noWareName = name.split(' (')[0].replace(/\s/g,'');
     const e = new CustomEvent('showNewItem',{
         bubbles: true,
         cancelable: true,
