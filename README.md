@@ -57,7 +57,7 @@ BUFF_SESSION="session=1-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 其中的json文件夹应有 **all.json** , **tabel.json** , 和 **paint.json**  
 
 **all.json** 是通过 **update.js** 从 **CSGO-API** 中获取的信息。  
-**tabel.json** 是通过 **update.js** 从 **all.json** 中提取的信息。
+**tabel.json** 是通过 **update.js** 从 **all.json** 中提取的信息。  
 **paint.json** 是通过 **getPaint.js** 从 **buff.163.com** 中爬取的贴图信息。
 
 ## images文件夹结构

@@ -1,3 +1,6 @@
+/**
+ * 库存和用户配置加载&保存
+*/
 function initializeConfig() {
     // 绑定文件选择按钮事件
     document.getElementById('load-config-btn').addEventListener('click', () => {

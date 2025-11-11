@@ -4,19 +4,18 @@
     --consoleMinHeight: 300px;
 }
 
-/* 在原有基础上添加 */
 .ConsolePanel {
     border: 1px solid #333;
     background-color: #222;
     box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6);
     min-width: var(--consoleMinWidth);
     min-height: var(--consoleMinHeight);
-    position: fixed; /* 确保可拖动定位 */
+    position: fixed;
     left: 20px;
     top: 20px;
-    display: flex; /* 新增flex布局 */
+    display: flex;
     flex-direction: column;
-    height: 300px; /* 新增视口高度限制 */
+    height: 300px;
     z-index: 1000;
 }
 
@@ -24,8 +23,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%; /* 改为严格分配剩余空间 */
-    min-height: 0; /* 关键修复 */
+    flex: 1 1 0%;
+    min-height: 0;
 }
 
 #Header {
@@ -36,7 +35,7 @@
     padding: 4px;
     -webkit-user-select: none;
     user-select: none;
-    cursor: move; /* 拖拽光标 */
+    cursor: move;
     -webkit-user-select: none;
     user-select: none;
 }
@@ -71,7 +70,7 @@
 #ConsoleLog {
     padding: 4px;
     flex: 1;
-    min-height: 0; /* 允许内容溢出 */
+    min-height: 0;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -84,7 +83,6 @@
     white-space: pre-wrap;
 }
 
-/* 在原有#ConsoleInput样式基础上添加 */
 #ConsoleInput {
     width: calc(100% - 8px);
     border-top: 1px solid #333;
@@ -96,12 +94,11 @@
     outline: none;
     min-height: 28px;
     white-space: pre-wrap;
-    flex-shrink: 0; /* 新增固定底部属性 */
+    flex-shrink: 0;
     position: sticky;
     bottom: 0;
 }
 
-/* 自动补全下拉框 */
 .autocomplete-suggestions {
     position: absolute;
     background: #3d4448;
@@ -154,15 +151,13 @@
     height: 10px;
     border-right: 2px solid #666;
     border-bottom: 2px solid #666;
-    cursor: nwse-resize; /* 调整大小光标 */
+    cursor: nwse-resize;
 }
 
 #ResizeDragTarget:hover {
     border-color: #999;
 }
 
-/* 在原有样式后添加 */
-/* 修改类型颜色定义 */
 .echo-line {
     margin: 2px 0;
     padding: 2px 4px;
@@ -187,7 +182,7 @@
 
 .echo-info {
     color: #44ddff;
-    border-left: 3px solid #00bfff; /* 明确指定边框样式 */
+    border-left: 3px solid #00bfff;
 }
 
 .echo-debug {

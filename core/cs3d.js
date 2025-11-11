@@ -1,3 +1,7 @@
+/**
+ * 展示新物品进行 3D 模型渲染
+*/
+
 // 场景设置
 let scene, camera, renderer, controls;
 let model;
@@ -7,9 +11,10 @@ let currentTextures = {};
 let paintData = null;
 
 // 模型基础路径
-const modelBasePath = 'models/weapons/models/';
-const legacyModelBasePath = 'models/weapons/legacyModels/';
+const modelBasePath = 'models/weapons/models/';             // 新模型路径
+const legacyModelBasePath = 'models/weapons/legacyModels/'; // 旧模型路径
 
+// 监听事件，展示新物品
 window.addEventListener('showNewItem', (event) => {
     console.log("收到了消息", event.detail);
     if (event.detail && event.detail.name) {
@@ -21,16 +26,16 @@ window.addEventListener('showNewItem', (event) => {
 async function loadItemByName(itemName, legacy_model) {
     try {
         console.log("开始加载物品:", itemName);
-        
+
         // 加载数据文件
         await loadDataFiles();
-        
+
         // 检查数据是否存在
         if (!paintData || !paintData[itemName]) {
             console.error('未找到物品数据:', itemName);
             return;
         }
-        
+
         // 查询贴图数据
         const textureData = paintData[itemName].texture_url;
         if (!textureData) {
@@ -53,7 +58,7 @@ async function loadItemByName(itemName, legacy_model) {
 
         // 加载模型和贴图
         await loadModelWithTextures(modelFileName, textureData, legacy_model);
-        
+
         console.log("物品加载完成");
 
     } catch (error) {
@@ -66,13 +71,13 @@ function loadModelWithTextures(modelFileName, textureUrls, legacy_model) {
     return new Promise((resolve, reject) => {
         const loader = new THREE.OBJLoader();
         const modelPath = `${legacy_model ? legacyModelBasePath : modelBasePath}${modelFileName}.obj`;
-        
+
         console.log("加载模型路径:", modelPath);
 
         loader.load(modelPath, function (obj) {
             console.log("模型加载成功");
             model = obj;
-            
+
             // 调整相机位置以适合模型
             const box = new THREE.Box3().setFromObject(model);
             const center = box.getCenter(new THREE.Vector3());
@@ -93,7 +98,7 @@ function loadModelWithTextures(modelFileName, textureUrls, legacy_model) {
             // 创建材质并应用所有贴图
             createPBRMaterial(textureUrls).then(material => {
                 console.log("应用贴图");
-                
+
                 // 遍历模型的所有网格，应用材质
                 model.traverse(function (child) {
                     if (child.isMesh) {
@@ -106,7 +111,7 @@ function loadModelWithTextures(modelFileName, textureUrls, legacy_model) {
 
                 scene.add(model);
                 console.log("模型添加到场景");
-                
+
                 resolve();
             }).catch(error => {
                 console.error('创建材质时出错:', error);
@@ -129,12 +134,12 @@ function createPBRMaterial(textureUrls) {
         const material = new THREE.MeshStandardMaterial({
             color: 0xffffff,
             roughness: 0.5,
-            metalness: 0.5
+            metalness: 0.2
         });
 
         let texturesLoaded = 0;
         const totalTextures = Object.keys(textureUrls).length;
-        
+
         console.log("开始加载贴图，总数:", totalTextures);
 
         // 清理之前的贴图
@@ -143,7 +148,7 @@ function createPBRMaterial(textureUrls) {
         function checkAllTexturesLoaded() {
             texturesLoaded++;
             console.log(`贴图加载进度: ${texturesLoaded}/${totalTextures}`);
-            
+
             if (texturesLoaded === totalTextures) {
                 console.log("所有贴图加载完成");
                 material.needsUpdate = true;
@@ -243,7 +248,7 @@ function init3D() {
             animationId = null;
         }
     }
-    
+
     // 创建场景
     scene = new THREE.Scene();
     scene.background = null;
@@ -269,12 +274,12 @@ function init3D() {
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
     scene.add(ambientLight);
 
-    const directionalLightA = new THREE.DirectionalLight(0xffffff, 4);
+    const directionalLightA = new THREE.DirectionalLight(0xffffff, 3);
     directionalLightA.position.set(10, 10, 10);
     directionalLightA.castShadow = true;
     scene.add(directionalLightA);
 
-    const directionalLightB = new THREE.DirectionalLight(0xffffff, 4);
+    const directionalLightB = new THREE.DirectionalLight(0xffffff, 3);
     directionalLightB.position.set(-10, -5, -10);
     directionalLightB.castShadow = true;
     scene.add(directionalLightB);
@@ -284,15 +289,15 @@ function init3D() {
     directionalLightC.castShadow = true;
     scene.add(directionalLightC);
 
-    const axisHelper = new THREE.AxesHelper(20);
-    scene.add(axisHelper);
+    // const axisHelper = new THREE.AxesHelper(20);
+    // scene.add(axisHelper);
 
     // 重置轨道控制器
     if (controls) {
         controls.dispose();
         controls = null;
     }
-    
+
     // 创建新的轨道控制器
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -316,13 +321,13 @@ function init3D() {
 // 清理场景
 function cleanupScene() {
     console.log("开始清理场景");
-    
+
     // 停止动画循环
     if (animationId) {
         cancelAnimationFrame(animationId);
         animationId = null;
     }
-    
+
     // 清理模型
     if (model) {
         console.log("清理模型");
@@ -343,7 +348,7 @@ function cleanupScene() {
         scene.remove(model);
         model = null;
     }
-    
+
     // 清理材质和贴图
     if (currentTextures) {
         console.log("清理贴图");
@@ -354,10 +359,10 @@ function cleanupScene() {
         });
         currentTextures = {};
     }
-    
+
     // 清理场景中的所有对象
     console.log("清理场景对象");
-    while(scene.children.length > 0) { 
+    while (scene.children.length > 0) {
         const object = scene.children[0];
         if (object.isMesh) {
             if (object.geometry) object.geometry.dispose();
@@ -371,13 +376,13 @@ function cleanupScene() {
         }
         scene.remove(object);
     }
-    
+
     // 清理控制器
     if (controls) {
         controls.dispose();
         controls = null;
     }
-    
+
     console.log("场景清理完成");
 }
 

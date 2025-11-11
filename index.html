@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>虚拟库存</title>
   <link rel="stylesheet" href="style/global.css" />
+  <link rel="stylesheet" href="style/new-item.css" />
   <link rel="stylesheet" href="style/inventory.css" />
   <link rel="stylesheet" href="style/sild-menu.css" />
   <link rel="stylesheet" href="style/panorama_base.css" />
@@ -15,16 +16,16 @@
 
 <body>
   <!-- 开发中，暂时注释掉视频 -->
-  <video id="intro-video" playsinline>
+  <!-- <video id="intro-video" playsinline>
     <source src="images/intro.webm" type="video/webm" />
-  </video>
+  </video> -->
   <div id="loading-screen">
     <!-- <div class="loading-spinner"></div> -->
     <div id="loading-info"></div>
     <!-- <button id="loading-confirm"></button> -->
     <div id="loading-progress" style="display: none"></div>
   </div>
-  <div class="ConsolePanel" id="ConsolePanel" tabindex="-1">
+  <div class="ConsolePanel" id="ConsolePanel" tabindex="-1" style="display: none;">
     <div class="MainContents" id="MainContents">
       <div id="Header" class="draggable">
         <span id="Title" class="unlocalized">Console</span>
@@ -46,6 +47,9 @@
         <div class="new-item-bar" id="new-item-bar"></div>
         <div class="new-item-content">
           <div id="cs3d"></div>
+          <div class="new-item-image">
+            <img src="" id="new-item-image">
+          </div>
           <div class="new-item-title" id="new-item-title">新物品</div>
           <div class="new-item-name" id="new-item-name"></div>
           <div class="new-item-actions">

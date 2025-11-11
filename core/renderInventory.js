@@ -1,4 +1,6 @@
-//库存
+/**
+ * 渲染库存
+ */
 var filterButtons = document.querySelectorAll('.filter-btn');
 var sortBySelect = document.querySelector('.sort-by');
 var inventoryGrid = document.querySelector('.inventory-grid');

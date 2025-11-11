@@ -1,4 +1,7 @@
-//导航栏聚焦
+/**
+ * 导航栏聚焦动画
+*/
+
 const canvas = document.getElementById('canvasNav');
 const ctx = canvas.getContext('2d');
 

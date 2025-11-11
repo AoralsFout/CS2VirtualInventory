@@ -1,3 +1,7 @@
+/**
+ * INS 菜单新增物品页面
+*/
+
 let currentPage = 1;
 const itemsPerPage = 30;
 
@@ -364,7 +368,7 @@ function showDetailPage(itemId) {
                     }
                     // closeWindow()
                     renderInventory(inventoryData)
-                    showNewItem(object.rarity.color, object.name, object.legacy_model)
+                    showNewItem("SKIN",object.rarity.color, object.name, object.legacy_model)
                 });
             } else {
                 object = data[itemId];
@@ -473,6 +477,7 @@ function showDetailPage(itemId) {
                     }
                     // closeWindow()
                     renderInventory(inventoryData)
+                    showNewItem("OTHER", object.rarity.color, object.name, object.image)
                 });
             }
         })

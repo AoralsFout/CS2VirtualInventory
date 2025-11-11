@@ -1,3 +1,7 @@
+/**
+ * 获取Buff的3D模型贴图，保存到data/paint.json
+ */
+
 const { default: axios } = require('axios');
 const fs = require('fs');
 const { CookieJar } = require('tough-cookie');

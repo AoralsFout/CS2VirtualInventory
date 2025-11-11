@@ -1,3 +1,7 @@
+/**
+ * INS菜单逻辑
+*/
+
 let isFristOpen = false
 
 //监听ins键触发窗口
