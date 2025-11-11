@@ -164,14 +164,5 @@ async function processData(jsonData) {
     }
 }
 
-// 检查是否需要安装axios
-try {
-    require('axios');
-} catch (error) {
-    console.error('❌ 未找到axios模块，请先安装:');
-    console.error('npm install axios');
-    process.exit(1);
-}
-
 // 执行主函数
 downloadAndProcessData();

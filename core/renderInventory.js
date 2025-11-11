@@ -39,7 +39,7 @@ fetch('config/setting.json')
         renderInventory(inventoryData)
     })
     .catch(error => echo(null, 'ERROR', null, '加载设置失败:' + error.message));
-    
+
 // 渲染库存
 function renderInventory(data) {
     let filteredData = data.filter(item => currentFilter === 'all' || item.type === currentFilter);
@@ -50,7 +50,7 @@ function renderInventory(data) {
             filteredData.sort((a, b) => b.timestamp - a.timestamp);
             break;
         case 'quality':
-            const qualityOrder = ['#e4ae39', '#eb4b4b', '#d32ce6', '"#8847ff', '#4b69ff', '#5e98d9', '#ccc', '#b0c3d9'];
+            const qualityOrder = ['#e4ae39', '#eb4b4b', '#d32ce6', '#8847ff', '#4b69ff', '#5e98d9', '#ded6cc', '#ccc', '#b0c3d9'];
             filteredData.sort((a, b) => {
                 const aIndex = qualityOrder.indexOf(a.quality);
                 const bIndex = qualityOrder.indexOf(b.quality);
@@ -62,21 +62,25 @@ function renderInventory(data) {
     inventoryGrid.innerHTML = '';
 
     filteredData.forEach(item => {
+        // 创建物品元素
         const itemElement = document.createElement('div');
         itemElement.classList.add('inventory-item');
         itemElement.setAttribute('data-item-type', item.addType);
         itemElement.setAttribute('onmouseup', `clickTigger(this,event)`);
+        // 避免显示null
         if (item.nameTag == null) {
             item.nameTag = '';
         }
         switch (item.addType) {
             case "skin":
+                // 增加贴纸显示
                 var stickers = '';
                 item.sticker.forEach(sticker => {
                     stickers += `
                         <div class="sticker" style="background-image:url('${sticker.image}');opacity:${stickerWearToOpacityPercentage(sticker.wear)}"></div>
                         `
                 });
+                // 基础内容
                 itemElement.innerHTML = `
                         <div class="item-background">
                             <img src="${item.image}" alt="${item.name}">
@@ -91,6 +95,7 @@ function renderInventory(data) {
                     `;
                 break;
             default:
+                // 基础内容
                 itemElement.innerHTML = `
                         <div class="item-background">
                             <img src="${item.image}" alt="${item.name}">
