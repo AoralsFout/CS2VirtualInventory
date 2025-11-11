@@ -1,0 +1,22 @@
+#mouse-menu {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.mouse-menu-option {
+    width: 100%;
+    font-size: 2vh;
+    background-color: #4b4b4b;
+    padding: 1vh 2vh;
+}
+
+.mouse-menu-option:hover {
+    background-color: #363636;
+}

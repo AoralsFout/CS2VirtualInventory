@@ -463,7 +463,7 @@ function showDetailPage(itemId) {
                             name: object.name,
                             subType: subType,
                             nextType: nextType,
-                            addType: "other",
+                            addType: object.id.split("-")[0],
                             quality: object.rarity.color,
                             rarity: object.rarity.name,
                             itemset: [],

@@ -228,6 +228,7 @@ function createPBRMaterial(textureUrls) {
                     console.error(`加载${textureKey}时出错:`, error);
                     reject(error);
                 });
+                // checkAllTexturesLoaded();
             } else {
                 console.log(`跳过${textureKey}`);
                 checkAllTexturesLoaded();
