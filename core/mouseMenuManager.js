@@ -1,7 +1,13 @@
+/**
+ * 鼠标菜单管理器
+*/
+
+// 全局变量
 let isMenuOpen = false;
 let currentMenuOptions = {}
 let currentAcitveElement = null;
 
+// 箱子菜单选项
 let crateOptions = {
     '开启': function () {
         console.log("开启");
@@ -9,6 +15,7 @@ let crateOptions = {
     },
 }
 
+// 皮肤菜单选项
 let skinOptions = {
     '检视': function () {
         console.log("检视");
@@ -16,6 +23,7 @@ let skinOptions = {
     },
 }
 
+// 默认菜单选项
 let defaultOptions = {
     '关闭': function () {
         console.log("关闭");

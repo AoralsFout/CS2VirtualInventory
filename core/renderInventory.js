@@ -1,4 +1,7 @@
-//库存
+/**
+ * 渲染库存
+ * */
+
 var filterButtons = document.querySelectorAll('.filter-btn');
 var sortBySelect = document.querySelector('.sort-by');
 var inventoryGrid = document.querySelector('.inventory-grid');
@@ -17,11 +20,17 @@ filterButtons.forEach(button => {
     });
 });
 
+sortBySelect.addEventListener('change', () => {
+    currentSortBy = sortBySelect.value;
+    renderInventory(inventoryData);
+})
+
+// 贴纸磨损转换为不透明度百分比
 function stickerWearToOpacityPercentage(wear) {
     return 0.8 * wear + 0.4
 }
 
-// 渲染库存
+// 渲染默认库存
 fetch('config/setting.json')
     .then(response => response.json())
     .then(data => {
@@ -30,25 +39,28 @@ fetch('config/setting.json')
         renderInventory(inventoryData)
     })
     .catch(error => echo(null, 'ERROR', null, '加载设置失败:' + error.message));
-
-// 屎山代码我靠 o(╥﹏╥)o
+    
+// 渲染库存
 function renderInventory(data) {
     let filteredData = data.filter(item => currentFilter === 'all' || item.type === currentFilter);
 
-    if (currentSortBy === 'time') {
-        filteredData.sort((a, b) => b.timestamp - a.timestamp);
-    } else if (currentSortBy === 'quality') {
-        const qualityOrder = ['yellow', 'red', 'pink', 'purple', 'blue', 'lightblue', 'white'];
-        filteredData.sort((a, b) => {
-            const aIndex = qualityOrder.indexOf(a.quality);
-            const bIndex = qualityOrder.indexOf(b.quality);
-            return bIndex - aIndex;
-        });
+    // 排序
+    switch (currentSortBy) {
+        case 'time':
+            filteredData.sort((a, b) => b.timestamp - a.timestamp);
+            break;
+        case 'quality':
+            const qualityOrder = ['#e4ae39', '#eb4b4b', '#d32ce6', '"#8847ff', '#4b69ff', '#5e98d9', '#ccc', '#b0c3d9'];
+            filteredData.sort((a, b) => {
+                const aIndex = qualityOrder.indexOf(a.quality);
+                const bIndex = qualityOrder.indexOf(b.quality);
+                return aIndex - bIndex;
+            });
+            break;
     }
 
     inventoryGrid.innerHTML = '';
 
-    console.log(filteredData)
     filteredData.forEach(item => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('inventory-item');

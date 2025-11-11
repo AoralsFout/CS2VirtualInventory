@@ -1,5 +1,6 @@
 /**
  * INS 菜单新增物品页面
+ * 究极屎山o(╥﹏╥)o
 */
 
 let currentPage = 1;
@@ -352,7 +353,7 @@ function showDetailPage(itemId) {
                             rarity: object.rarity.name,
                             itemset: [],
                             image: object.image,
-                            timestamp: Date.now,
+                            timestamp: Date.now(),
                             paint_seed: document.getElementById('patternTemplate').value,
                             paint_index: document.getElementById('skinNumber').value,
                             wear: Number("0." + wearInput.value),
@@ -468,7 +469,7 @@ function showDetailPage(itemId) {
                             rarity: object.rarity.name,
                             itemset: [],
                             image: object.image,
-                            timestamp: Date.now,
+                            timestamp: Date.now(),
                             isnew: true
                         };
                         inventoryData.push(itemData)
