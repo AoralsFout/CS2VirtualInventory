@@ -15,9 +15,9 @@
 
 <body>
   <!-- 开发中，暂时注释掉视频 -->
-  <!-- <video id="intro-video" playsinline>
-      <source src="images/intro.webm" type="video/webm" />
-    </video> -->
+  <video id="intro-video" playsinline>
+    <source src="images/intro.webm" type="video/webm" />
+  </video>
   <div id="loading-screen">
     <!-- <div class="loading-spinner"></div> -->
     <div id="loading-info"></div>
@@ -45,9 +45,7 @@
       <div class="new-item-container">
         <div class="new-item-bar" id="new-item-bar"></div>
         <div class="new-item-content">
-          <div class="new-item-image">
-            <img src="" alt="" id="new-item-image-src">
-          </div>
+          <div id="cs3d"></div>
           <div class="new-item-title" id="new-item-title">新物品</div>
           <div class="new-item-name" id="new-item-name"></div>
           <div class="new-item-actions">
@@ -55,7 +53,8 @@
             <button class="new-item-button" onclick="continueNewItem()">继续</button>
           </div>
           <div class="video-mask" id="new-item-video-mask"></div>
-          <video src="ui_item_presenr_vpcf/合成 1.mp4" loop autoplay muted no-controls class="new-item-video" id="new-item-video"></video>
+          <video src="ui_item_presenr_vpcf/合成 1.mp4" loop autoplay muted no-controls class="new-item-video"
+            id="new-item-video"></video>
         </div>
       </div>
     </div>
@@ -485,6 +484,9 @@
       </div>
     </div>
   </div>
+  <div>
+    <audio src="sounds/inventory/inventory_new_item_01.wav" no-controls id="inventory_new_item_01"></audio>
+  </div>
   <script src="core/console.js"></script>
   <script src="script.js"></script>
   <script src="core/InsMenu.js"></script>
@@ -493,6 +495,10 @@
   <script src="core/renderInventory.js"></script>
   <script src="core/renderAddItems.js"></script>
   <script src="core/renderConfig.js"></script>
+  <script src="lib/three/build/three.min.js"></script>
+  <script src="lib/three/examples/js/loaders/OBJLoader.js"></script>
+  <script src="lib/three/examples/js/controls/OrbitControls.js"></script>
+  <script src="core/cs3d.js"></script>
 </body>
 
 </html>

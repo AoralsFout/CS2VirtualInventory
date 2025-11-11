@@ -10,13 +10,23 @@
 ## 启动项目
 
 使用浏览器打开 index.html 文件即可启动项目基础功能。
-创建 .env 文件，添加 STEAM_API_KEY 环境变量。
+
+安装依赖
+```
+npm install
+```
+
+创建 .env 文件，添加环境变量。
 ```
 # Steam Web API Key
 # 从 https://steamcommunity.com/dev/apikey 获取
 STEAM_API_KEY=your_steam_api_key
+# Buff.163.com Session
+# 登录 https://buff.163.com 后通过浏览器开发者工具获取 Session
+BUFF_SESSION=your_buff_session
 ```
 启动 /proxy/server.js 即可启用代理服务器，用于获取 Steam 用户信息。
+
 注意：您需要在浏览器里设置允许自动播放视频，否则启动动画会出现问题
 
 ## 功能介绍
@@ -44,10 +54,11 @@ STEAM_API_KEY=your_steam_api_key
 
 ### data文件夹
 
-其中的json文件夹应有 **all.json** 和 **tabel.json**  
+其中的json文件夹应有 **all.json** , **tabel.json** , 和 **paint.json**  
 
 **all.json** 是通过 **update.js** 从 **CSGO-API** 中获取的信息。  
 **tabel.json** 是通过 **update.js** 从 **all.json** 中提取的信息。
+**paint.json** 是通过 **getPaint.js** 从 **buff.163.com** 中爬取的贴图信息。
 
 ## images文件夹结构
 
